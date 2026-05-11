@@ -11,7 +11,7 @@ import {
 const SYMBOLS = ['🐶', '🐱', '🐭', '🐰', '🐼', '🐸', '🦊', '🐨'];
 
 function createShuffledDeck() {
-  // create 2 cards per symbol
+ 
   let id = 0;
   const cards = SYMBOLS.flatMap((sym) => [
     { id: id++, value: sym, isMatched: false, isRevealed: false, seenCount: 0 },
@@ -28,8 +28,8 @@ function createShuffledDeck() {
 
 export default function App() {
   const [cards, setCards] = useState(createShuffledDeck);
-  const [revealedIds, setRevealedIds] = useState([]); // up to 2 ids
-  const [isBusy, setIsBusy] = useState(false); // lock while resolving
+  const [revealedIds, setRevealedIds] = useState([]); 
+  const [isBusy, setIsBusy] = useState(false); 
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
@@ -49,9 +49,9 @@ export default function App() {
   };
 
   const handleCardPress = (card) => {
-    if (isBusy) return; // lock while resolving
-    if (card.isMatched || card.isRevealed) return; // can't tap matched or already revealed in current pair
-    if (revealedIds.length === 2) return; // never allow more than 2
+    if (isBusy) return; 
+    if (card.isMatched || card.isRevealed) return; 
+    if (revealedIds.length === 2) return; 
 
     setCards((prev) =>
       prev.map((c) =>
@@ -68,7 +68,7 @@ export default function App() {
     setRevealedIds((prev) => {
       const next = [...prev, card.id];
 
-      // scoring: if this card was seen before (seenCount >= 1 in prev state), deduct -1
+     
       const prevCardState = cards.find((c) => c.id === card.id);
       if (prevCardState && prevCardState.seenCount >= 1) {
         setScore((s) => s - 1);
