@@ -1,6 +1,6 @@
-import { Stack } from 'expo-router';
-import React from 'react';
+// app/_layout.tsx
+import { Slot } from "expo-router";
 
 export default function RootLayout() {
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return <Slot />;
 }
